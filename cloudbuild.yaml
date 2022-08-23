@@ -1,0 +1,27 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: /bin/bash
+  args:
+    - -c
+    - |
+        # Cloud Build doesn't recover the .git file. Thus checkout the repo for this
+        git clone --branch $_BRANCH https://source.developers.google.com/p/$PROJECT_ID/r/$REPO_NAME /tmp/repo ;
+        cd /tmp/repo/
+        # Make a diff between this version and the previous one and store the result into a file
+        git diff --name-only --diff-filter=AMDR @~..@ | cut -d"/" -f1 | uniq > diff
+        cat diff
+        for i in $(cat diff); do
+          echo $i
+          cd $i
+            if(ls | grep .env);then x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//'); echo gcloud deploy --update-secret "${i}";else echo gcloud deploy;fi
+
+          cd ..
+        done
+
+
+substitutions:
+  _BRANCH: master
+  _DEPLOY_REGION: asia-southeast2
+  
+timeout: 1800s
+
