@@ -13,7 +13,8 @@ steps:
         for i in $(cat diff); do
           echo $i
           cd $i
-            if(ls | grep .env);then x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//'); echo gcloud deploy --update-secret "${i}";else echo gcloud deploy;fi
+            cat .env
+            if(ls | grep .env);then x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//'); echo gcloud deploy --update-secret "${x}";else echo gcloud deploy;fi
 
           cd ..
         done
