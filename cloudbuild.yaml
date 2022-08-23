@@ -15,7 +15,8 @@ steps:
           cd $i
             cat .env
             if ls -al | grep .env ; then
-              echo ada di $i
+              x=$(for i in $(cat test.txt); do echo -n "${i}=${i}:latest",; done| sed 's/,$//')
+              echo $x
             else 
               echo tidak ada di $i
             fi
