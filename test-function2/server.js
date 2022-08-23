@@ -5,7 +5,7 @@ var moment = require('moment-timezone');
 moment.tz.setDefault("Asia/Jakarta");
 
 var con = mysql.createPool({
-  host     : '127.0.0.1',
+  host     : '10.91.32.3',
   port     : '3306',
   user     : 'root',
   password : 'Sadvikaalam98_',
@@ -13,7 +13,7 @@ var con = mysql.createPool({
 });
 
 const redisClient = redis.createClient({
-  host: '127.0.0.1',
+  host: '10.45.212.19',
   port: 6379
 });
 
