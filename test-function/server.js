@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-const redis = require('redis');
 var moment = require('moment-timezone');
 
 moment.tz.setDefault("Asia/Jakarta");
@@ -10,11 +9,6 @@ var con = mysql.createPool({
   user     : process.env.MYSQL_USER,
   password : process.env.MYSQL_PASSWORD,
   database : 'testing'
-});
-
-const redisClient = redis.createClient({
-  host: '10.45.212.19',
-  port: 6379
 });
 
 exports.server = (req, res) => {
