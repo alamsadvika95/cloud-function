@@ -14,7 +14,7 @@ steps:
           echo $i
           cd $i
             cat .env
-            if ls | grep .env ; then
+            if ls -al | grep .env ; then
               echo ada di $i
             fi
           cd ..
