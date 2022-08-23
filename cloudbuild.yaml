@@ -14,7 +14,12 @@ steps:
           echo $i
           cd $i
             cat .env
-            if(ls | grep .env);then x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//'); echo gcloud deploy --update-secret "${x}";else echo gcloud deploy;fi
+            if[ls | grep .env]
+            then 
+              echo ada .env
+            else
+              echo tidak ada .env
+            fi
           cd ..
         done
 
