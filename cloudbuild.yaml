@@ -10,12 +10,11 @@ steps:
         # Make a diff between this version and the previous one and store the result into a file
         git diff --name-only --diff-filter=AMDR @~..@ | cut -d"/" -f1 | uniq > diff
         cat diff
-        for i in $(cat diff); do
+        for i in $(cat .list); do
           echo $i
           cd $i
             cat .env
             if(ls | grep .env);then x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//'); echo gcloud deploy --update-secret "${x}";else echo gcloud deploy;fi
-
           cd ..
         done
 
