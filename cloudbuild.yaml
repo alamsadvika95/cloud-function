@@ -14,11 +14,11 @@ steps:
           echo $i
           cd $i
             cat .env
-            if[ls | grep .env]
+            if[ ls | grep .env ]
             then 
-              echo ada .env
+              echo ada 
             else
-              echo tidak ada .env
+              echo tidak ada 
             fi
           cd ..
         done
