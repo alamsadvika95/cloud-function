@@ -16,6 +16,8 @@ steps:
             cat .env
             if ls -al | grep .env ; then
               echo ada di $i
+            else 
+              echo tidak ada di $i
             fi
           cd ..
         done
