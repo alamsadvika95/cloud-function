@@ -17,7 +17,7 @@ steps:
             if ls -al | grep .env ; then
               x=$(for i in $(cat .env); do echo -n "${i}=${i}:latest",; done| sed 's/,$//');
               echo $x
-              gcloud functions deploy $i --region $_DEPLOY_REGION --trigger-http --update-secret "${x}" --memory 128MB --vpc-connector apidb --source https://source.developers.google.com/projects/$PROJECT_ID/repos/$REPO_NAME/moveable-aliases/$_BRANCH/paths/$i/ --runtime nodejs16 --entry-point server
+              gcloud functions deploy $i --region $_DEPLOY_REGION --trigger-http --update-secrets "${x}" --memory 128MB --vpc-connector apidb --source https://source.developers.google.com/projects/$PROJECT_ID/repos/$REPO_NAME/moveable-aliases/$_BRANCH/paths/$i/ --runtime nodejs16 --entry-point server
             else 
               echo tidak ada di $i
             fi
