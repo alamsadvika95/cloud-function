@@ -23,7 +23,6 @@ steps:
           cd ..
         done
 
-
 substitutions:
   _BRANCH: master
   _DEPLOY_REGION: us-central1
