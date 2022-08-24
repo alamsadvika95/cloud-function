@@ -10,7 +10,7 @@ steps:
         # Make a diff between this version and the previous one and store the result into a file
         git diff --name-only --diff-filter=AMDR @~..@ | cut -d"/" -f1 | uniq > diff
         cat diff
-        for i in $(cat .list); do
+        for i in $(cat diff); do
           echo $i
           cd $i
             if ls -al | grep .env ; then
